@@ -1,0 +1,37 @@
+{% extends 'contacts/base.html' %}
+
+
+{% block content %}
+
+
+
+   <center>
+
+       <table  border=1 frame=void rules=raws class="table table-striped">
+           <tr>
+
+               <th class="cell">First Name</th>
+               <th class="cell">Last Name</th>
+               <th class="cell">Email</th>
+               <th class="cell">Mob no.</th>
+           </tr>
+           {% for c in list %}
+           <tr>
+               <td class="cell">{{ c.first_name }}</td>
+               <td class="cell">{{ c.last_name }}</td>
+               <td class="cell">{{ c.email }}</td>
+               <td class="cell">{{ c.mob_no}}</td>
+               <td id="no_border" class="#"><a href="{% url 'contact_edit' pk=c.pk %}">
+                <button class="btn-info  glyphicon glyphicon-pencil">Edit</button></a></td>
+               <td id="no_border delete"><a href="{% url 'contact_delete' pk=c.pk %}">
+                <button autofocus class="btn-danger red glyphicon glyphicon-trash">delete
+                </button></a></td>
+           </tr>
+               {% endfor %}
+       </table>
+           <a href="{% url 'post_new' %}" class="top-menu"><button class="glyphicon glyphicon-plus">Add_Contact</button></a>
+   </center>
+
+{% endblock %}
+
+
