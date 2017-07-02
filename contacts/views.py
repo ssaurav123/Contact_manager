@@ -12,16 +12,13 @@ from .forms import PostForm
 
 def post_new(request):
     if request.method=="POST":
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
-            post = form.save(commit = False)
-            post.save()
+            form.save()
             return redirect('contactlist')
     else:
         form = PostForm()
         return render(request, 'contacts/home.html', {'form': form})
-
-
 
 def contact_edit(request,pk):
     ContactData = get_object_or_404(Contact,pk=pk)

@@ -3,35 +3,34 @@
 
 {% block content %}
 
+                <h2>Contact_List</h2>
 
-
-   <center>
-
-       <table  border=1 frame=void rules=raws class="table table-striped">
-           <tr>
-
-               <th class="cell">First Name</th>
-               <th class="cell">Last Name</th>
-               <th class="cell">Email</th>
-               <th class="cell">Mob no.</th>
-           </tr>
-           {% for c in list %}
-           <tr>
-               <td class="cell">{{ c.first_name }}</td>
-               <td class="cell">{{ c.last_name }}</td>
-               <td class="cell">{{ c.email }}</td>
-               <td class="cell">{{ c.mob_no}}</td>
-               <td id="no_border" class="#"><a href="{% url 'contact_edit' pk=c.pk %}">
-                <button class="btn-info  glyphicon glyphicon-pencil">Edit</button></a></td>
-               <td id="no_border delete"><a href="{% url 'contact_delete' pk=c.pk %}">
+                    <div class="col-md-7">
+                    <div class="content well">
+                    <div class="row">
+                    {% for course in list %}
+                         <div class="course box-card col-lg-10">
+                                 <div class="image"> <img src = '{{ course.image.url }}' height="80" width="80" class = 'img-responsive'/></div>
+                                 <h3>{{ course.first_name }} {{ course.last_name }}</h3>
+                                 <div class="Email"> <h4>{{course.email}}</h4></div>
+                             <div class="Phone"><h4>({{ course.Type }}) {{course.mob_no}}</h4></div>
+                                 <a href="{% url 'contact_edit' pk=course.pk %}">
+                <button class="btn-info  glyphicon glyphicon-pencil">Edit</button></a>
+                             <a href="{% url 'contact_delete' pk=course.pk %}">
                 <button autofocus class="btn-danger red glyphicon glyphicon-trash">delete
-                </button></a></td>
-           </tr>
-               {% endfor %}
-       </table>
-           <a href="{% url 'post_new' %}" class="top-menu"><button class="glyphicon glyphicon-plus">Add_Contact</button></a>
-   </center>
-
+                </button></a>
+                        </div>
+                        {% endfor %}
+                <div class="box-card col-lg-10">
+                    <a href="{% url 'post_new' %}">
+                     <span class="glyphicon glyphicon-plus"><h1 align="center">Create New Contact</h1></span>
+                </a>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                <div class="col-md-7">
+                </div>
 {% endblock %}
 
 
