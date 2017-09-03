@@ -25,6 +25,7 @@ from Contact_manager import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls ,name="admin"),
     url(r'', include('contacts.urls'),name=""),
+    url(r'^accounts/', include('allauth.urls')),
 ]
 
 
